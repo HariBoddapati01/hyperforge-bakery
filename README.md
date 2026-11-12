@@ -1,6 +1,6 @@
-# hv-testbed-images
+# hyperforge-bakery
 
-Golden images for the hypervisor testbed: Packer-built host AMIs, plus the
+Golden images for HyperForge: Packer-built host AMIs, plus the
 upload/promotion flow for lab guest images.
 
 ## Host AMIs (`packer/`)
@@ -16,7 +16,7 @@ cd packer/hyperv-host && packer init . && packer build .   # ~30+ min, metal
 ```
 
 Rebuild only when the base OS or tooling changes — runtime config lives in
-cloud-init/userdata in `hv-testbed-infra`, so routine changes don't need a
+cloud-init/userdata in `hyperforge-core`, so routine changes don't need a
 re-bake.
 
 ## Lab guest images (`scripts/`)

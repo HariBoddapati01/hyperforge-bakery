@@ -40,10 +40,10 @@ source "amazon-ebs" "hyperv_host" {
   }
 
   user_data_file = "${path.root}/bootstrap-winrm.ps1"
-  ami_name       = "hv-testbed-hyperv-host-{{timestamp}}"
+  ami_name       = "hyperforge-hyperv-host-{{timestamp}}"
 
   tags = {
-    project = "hv-testbed"
+    project = "hyperforge"
     role    = "hyperv-host"
   }
 }

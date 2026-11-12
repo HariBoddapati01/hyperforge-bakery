@@ -8,7 +8,7 @@ set -euo pipefail
 
 IMAGE_FILE="${1:?usage: upload-lab-image.sh <image-file> <leg> [bucket]}"
 LEG="${2:?leg required: kvm|vme|hyperv}"
-BUCKET="${3:-hv-testbed-golden-images}"
+BUCKET="${3:-hyperforge-golden-images}"
 
 case "$LEG" in
   kvm|vme)

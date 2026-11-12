@@ -34,10 +34,10 @@ source "amazon-ebs" "kvm_host" {
     most_recent = true
   }
 
-  ami_name = "hv-testbed-kvm-host-{{timestamp}}"
+  ami_name = "hyperforge-kvm-host-{{timestamp}}"
 
   tags = {
-    project = "hv-testbed"
+    project = "hyperforge"
     role    = "kvm-host"
   }
 }
