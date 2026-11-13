@@ -6,8 +6,10 @@ set -euo pipefail
 export DEBIAN_FRONTEND=noninteractive
 
 sudo apt-get update
+# qemu-system-x86, not qemu-kvm: the latter is an ambiguous virtual package
+# on Ubuntu 25.10+ and apt refuses to resolve it
 sudo apt-get install -y \
-  qemu-kvm \
+  qemu-system-x86 \
   libvirt-daemon-system \
   libvirt-clients \
   virtinst \
