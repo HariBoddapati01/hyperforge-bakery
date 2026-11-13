@@ -7,11 +7,11 @@
 set -euo pipefail
 
 IMAGE_FILE="${1:?usage: upload-lab-image.sh <image-file> <leg> [bucket]}"
-LEG="${2:?leg required: kvm|vme|hyperv}"
+LEG="${2:?leg required: kvm|vme|ahv|hyperv}"
 BUCKET="${3:-hyperforge-golden-images}"
 
 case "$LEG" in
-  kvm|vme)
+  kvm|vme|ahv)
     [[ "$IMAGE_FILE" == *.qcow2 ]] || { echo "error: $LEG leg expects a .qcow2 image" >&2; exit 1; } ;;
   hyperv)
     [[ "$IMAGE_FILE" == *.vhdx ]] || { echo "error: hyperv leg expects a .vhdx image" >&2; exit 1; } ;;
