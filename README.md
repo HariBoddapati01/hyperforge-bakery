@@ -20,8 +20,21 @@ This repo bakes two kinds of images:
 | `hyperv-host` | Windows Server 2022 | Hyper-V role (verified after reboot), AWS.Tools.S3 | `m6i.metal` — the role install itself requires real VT-x |
 
 ```sh
+./scripts/build.sh kvm        # resolves the profile, bakes the right host AMI
+./scripts/build.sh hyperv     # ~30+ min, metal
+./scripts/build.sh ahv        # shares kvm-host; completes instantly if baked
+./scripts/build.sh vme --dry-run
+```
+
+`build.sh <hypervisor>` reads `hyperforge-core/profiles/<hypervisor>.yaml`
+(override location with `--core-dir` or `HYPERFORGE_CORE_DIR`) and runs the
+packer build its `host_image` field names — so hypervisors that share a host
+stack share one AMI, and a new hypervisor needs no change here. Equivalent
+manual form:
+
+```sh
 cd packer/kvm-host    && packer init . && packer build .
-cd packer/hyperv-host && packer init . && packer build .   # ~30+ min, metal
+cd packer/hyperv-host && packer init . && packer build .
 ```
 
 AMIs are named `hyperforge-kvm-host-<timestamp>` /
